@@ -26,7 +26,7 @@ module VcrCable
       if !config['ignore_hosts'].blank?
         c.ignore_hosts config['ignore_hosts']
       end
-      c.options :record => :new_episodes, :match_requests_on => [:method, :uri, :body]
+      c.default_cassette_options = { :record => :new_episodes, :match_requests_on => [:method, :uri, :body] }
     end
   end
 
