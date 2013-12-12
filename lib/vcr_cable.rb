@@ -7,7 +7,7 @@ module VcrCable
   CONFIG_FILE = 'vcr_cable.yml'
   DEFAULT_CONFIG = {
     'development' => {
-      'hook_into' => :fakeweb,
+      'hook_into' => :webmock,
       'cassette_library_dir' => 'development_cassettes',
       'allow_http_connections_when_no_cassette' => true
     }
