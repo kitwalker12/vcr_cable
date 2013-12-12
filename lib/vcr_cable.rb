@@ -18,6 +18,15 @@ module VcrCable
       c.hook_into config['hook_into']
       c.cassette_library_dir = config['cassette_library_dir']
       c.allow_http_connections_when_no_cassette = config['allow_http_connections_when_no_cassette']
+      if !config['ignore_port'].blank?
+        c.ignore_request do |request|
+          URI(request.uri).port == config['ignore_port']
+        end
+      end
+      if !config['ignore_hosts'].blank?
+        c.ignore_hosts config['ignore_hosts']
+      end
+      c.options :record => :new_episodes, :match_requests_on => [:method, :uri, :body]
     end
   end
 
